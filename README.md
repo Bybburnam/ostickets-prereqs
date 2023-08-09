@@ -4,21 +4,14 @@
 
 <h1>osTicket - Prerequisites and Installation</h1>
 In this guide, we're diving into the complete setup process for osTicket, along with all the stuff you need to have in place before you get started. I'll be walking you through how to set up osTicket on an Azure VM (Virtual Machine). Now, assuming you've already got a VM up and running and you're connected to it using a remote desktop, we're good to go.<br/>
+<br/>
+If you haven't sorted out your VM yet, make sure to do that before you move on to the next steps. Ready to start? Just hit the ground running by clicking right over here! To get started, click here for files:  <a href="https://drive.google.com/drive/u/2/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6">INSTALLATION FILES!</a>
 
-If you haven't sorted out your VM yet, make sure to do that before you move on to the next steps. Ready to start? Just hit the ground running by clicking right over here! To get started, click here for files: https://drive.google.com/drive/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6 <br />
-
-
-<h2>Video Demonstration</h2>
-Coming Soon!
-
-- ### [YouTube: How To Install osTicket with Prerequisites](https://www.youtube.com)
 
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines)
-- osTicket (Help Desk Ticketing System)
 - Remote Desktop
-- PHP Manager
 - Internet Information Services (ISS)
 - MySQL
 
@@ -36,81 +29,97 @@ Coming Soon!
 - MySQL
 - Heidi SQL
 - osTicket v1.15.8
-Link to downloads: https://drive.google.com/drive/u/0/folders/1APMfNyfNzcxZC6EzdaNfdZsUwxWYChf6
+- [osTicket Installation Documentation](https://docs.osticket.com/en/latest/Getting%20Started/Installation.html) (to explain the function of each installation file)
 
 <h2>Installation Steps</h2>
 
-<p>
-Before we delve into the osTicket tutorial, it's essential to set up the foundation. We'll begin by creating a virtual machine using Microsoft Azure. This step is crucial as it forms the platform on which we'll build the osTicket system. By establishing a solid groundwork through the virtual machine setup, we'll be ready to seamlessly proceed with the osTicket installation and configuration process. Let's get started by crafting the ideal environment for a smooth osTicket experience.
-</p>
-<br />
+## How to Install osTicket
+
+To start: Click your osTicket virtual machine and copy the Public IP address. Your Virtual Machine should already be created. If not, I have a tutorial to do so.
+
+### Step 1: Connect to Your Virtual Machine
+
+1. Go to the start menu on your computer, type **Remote Desktop Connection** in your search bar.
+2. PASTE your Virtual Machine's IP address in the computer text input.
+3. Click **Connect**.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/e7600f67-f608-44c6-9aa7-bf36bfbac786)
 
 
-<h2>Part 1 (Create a Resource Group in Azure)</h2>
+### Step 2: Provide Login Credentials
 
-<h2>Step 1:** Create a Resource Group to organize your virtual machine and its resources.</h2>
- ![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/693d54a2-01e7-4354-a447-e9b06e38092c) <br />
-<br />
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/e290ebd8-80be-423e-bd12-94d7c2c8fe27) <br />
-<br />
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/30150b47-027f-421c-b09a-a8bad532a8ca) <br />
+1. Go ahead and input the log-in credentials you used for your virtual machine.
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<h2>Creating Virtual Machine</h2>
-**We will set up a Windows 10 Virtual Machine (VM) with 2-4 Virtual CPUs, optimizing performance. Note that fewer CPUs may affect connection speed. During VM setup, ensure it creates a new Virtual Network (Vnet) for smooth connectivity**
-
-Note: This guide assists you through the lab, with no need for strict memorization.
-
-<h2>Step 1</h2>: Forge an Azure Virtual Machine, opting for Windows 10 and embracing 4 vCPUs for optimal performance.
-
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/8fb96362-cafe-441d-9519-07f650146c47)  <br />
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/86241c57-07c0-43cf-a37c-d7b88ea9dba5)
 
 
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/9160735d-37dd-4a79-a3ea-08af3ec00110) <br />
+### Step 3: Accept Certificate Errors
 
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/976f60b0-fa6a-40e0-9059-a3d77eec7b66) <br />
+1. You should see something like this. Click **Yes** to proceed despite these certificate errors.
 
-<h2>Step 2</h2>: Designate a username (e.g., labuser) and establish a robust password (e.g., osTicketPassword1!) for your VM.
-
-By favoring 4 vCPUs in Step 2, you strike a balance between performance and connection speed, enhancing your overall experience throughout the tutorial.</p>
-<br />
-
-**COPY THE FOLLOWING SETTINGS AND INPUT TEXT FROM PICTURES BELOW. Please use login details above for later.
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/895f5d91-d9f5-41b5-b232-d682b2451c28) ![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/aed77136-6ee1-4a6f-886a-2704b0c6f461)
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/1ec19e9a-e512-4fd2-b765-1fc0b0ef6ba5)
 
 
-<h2>CLICK NEXT UNTIL NETWORKING, ALLOW IT TO AUTOMATICALLY CREATE A NETWORK FOR THE VIRTUAL MACHINE</h2>
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/3bfd89d3-38ca-4404-aaa4-63d42c3f6658)
-<br />
-<br />
 
-<h2>CLICK REVIEW + CREATE, AND THEN CREATE</h2>
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/4931b4ac-6244-4901-837b-765004d280b5)<br />
-<br />
-<br />
+### Step 4: Open Virtual Machine
 
-<h2>YOU SHOULD SEE THIS CONFIRMATION PAGE</h2>
+1. Your virtual machine should open. Make sure you have the installation files open and available for use.
 
-![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/7b908088-9212-4a8f-ac10-733f7326266b)
+### Step 5: Install / Enable IIS
 
-<br />
-<br />
+1. Right-click the start menu and click **Run**.
+2. Type **control** and select **Control Panel**.
+3. Click **Programs**, then click **Turn Windows features on or off**
 
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/dc091017-bb52-487c-8bf6-2aea87e8339f)
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+4. Look for **Internet Information Services**, check the box, and expand.
+5. Check **World Wide Web Services**, expand it.
+6. Go to **Application Development Features**, expand, select **CGI**, then collapse.
+7. Expand **Common HTTP Features** and ensure everything is selected.
+8. Click **OK**.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/fcff0c71-c6e2-41de-a34e-5e61a0950382)
+
+
+### Step 6: Test IIS Installation
+
+1. Make sure all **Common HTTP Features** are checked.
+2. In your browser, visit `127.0.0.1` to verify that IIS is installed and enabled.
+   
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/1dbe42a0-ab5e-4b8e-91b2-9f7f28cb6132)
+
+
+### Step 7: Download and Install Required Installation Files
+
+Note: This step is the longest and is broken down for convenience.
+
+### Step 8: Install PHP Manager for IIS
+
+1. From the Installation Files, download and install **PHP Manager for IIS** (`PHPManagerForIIS_V1.5.0.msi`).
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/f3423aea-0691-4fdb-b656-ff568bf26737)
+
+
+### Step 9: Install Rewrite Module
+
+1. Download/Install **Rewrite Module** (`rewrite_amd64_en-US.msi`) from the Installation Files.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/635c83a1-25c0-463d-93f3-d45f5ff1b360)
+
+### Step 10: Create the Directory C:\PHP
+
+1. Open File Explorer > This PC > Windows (C:) Drive.
+2. Right-click to add a new folder and name it "PHP".
+3. 
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/841302fe-185e-440d-b94d-29b975929b5e)
+
+
+### Step 11: Download and Install PHP 7.3.8
+
+1. From the Installation Files, download **PHP 7.3.8** (`php-7.3.8-nts-Win32-VC15-x86.zip`) and unzip the contents into C:\PHP.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/ff38cd02-df70-418b-8780-b5da0db69575)
+
+
+
