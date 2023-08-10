@@ -144,18 +144,138 @@ Note: This step is the longest and is broken down for convenience.
 
 ![14](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/3cd6347a-151a-4d10-8de2-818655e8d244)
 
+### Step 14: Configure PHP Manager in IIS
 
-### Step 14: Configure IIS and Register PHP
+1. Click the Start menu, type **IISAdmin**, right-click it, and select **Run as administrator**.
+2. Double-click **PHP Manager**.
+3. Select **New PHP Version**.
+4. Browse to the C drive, navigate to the PHP folder, and select **php-cgi**.
+5. Click the file, open it, and then click **OK**.
 
-1. Open **IIS** as an Administrator.
-2. Register PHP from within IIS.
-3. Reload IIS by stopping and starting the server.
+![15](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/d0e40d2c-611c-4985-8f77-4f6296a0d9ed)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/b14773b6-7fc8-49f9-94a1-1ac954a796a3)
+
 
 ### Step 15: Install osTicket v1.15.8
 
 1. Download **osTicket** from the Installation Files Folder.
 2. Extract and copy the **"upload"** folder to `c:\inetpub\wwwroot`.
 3. Within `c:\inetpub\wwwroot`, rename the copied **"upload"** folder to **"osTicket"**.
-4. Reload IIS again by stopping and starting the server.
+4. Reload IIS again by stopping and starting the server. (Click restart)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/1565b7e7-00df-49aa-b331-72d329af2b77)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/af801360-ca35-416d-9f70-b40d65b40787)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/7c590b5b-3754-44d6-9090-45ac0ef27d0b)
 
 
+### Step 16: Check Your osTicket Site on IIS
+
+1. **Navigate to Your osTicket Site:** In IIS, go to **Sites** > **Default** > **osTicket**.
+2. On the right, click **"Browse *:80"** to open your osTicket site.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/2196a8ec-8ad0-4bab-a34f-f4bae7b06f73)
+
+
+
+### Step 17: Verify Site Appearance
+
+1. Your site should resemble the image above. If there's an error, revisit the previous steps to ensure you haven't missed anything.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/45dd212c-1b68-457b-8ab0-bb9d567d00c7)
+
+
+### Step 18: Enable Required Extensions
+
+1. Some extensions might not be enabled in the osTicket browser. To enable them:
+2. Return to IIS, navigate to **Sites** > **Default** > **osTicket**.
+3. Double-click **PHP Manager**.
+4. Click **"Enable or disable an extension"**.
+5. Enable: `php_imap.dll`.
+6. Enable: `php_intl.dll`.
+7. Enable: `php_opcache.dll`.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/b4f901c4-ba76-47cb-8f1d-693c8775a78d)
+
+
+
+### Step 19: Refresh osTicket
+
+1. Refresh the osTicket site in your browser to see the changes you made.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/fe10ca92-89b2-4578-86bf-e55d5c985951)
+
+
+### Step 20: Rename Configuration File
+
+1. In File Explorer, search for `C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php`.
+2. Rename `ost-sampleconfig.php` to `ost-config.php`.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/9e346e3d-a412-4307-b4a9-665b1291fed8)
+
+
+### Step 21: Adjust File Permissions
+
+1. Right-click on the `ost-config.php` file > click **Properties**.
+2. Click **Security** > **Advanced** > **Disable Inheritance**.
+3. In the pop-up window, select **Remove all permissions inherited from this object**.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/a79c73d3-bd49-41ab-a5dc-dbfb29085e05)
+
+      
+### Step 22: Assign Permissions
+
+1. Click **Select a principal** > Type: `EVERYONE` > Click **Check Names** > Click **OK** > Select all permissions and give **full control** > Click **OK**
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/976bc4bf-2f54-48d1-a543-51b76cbb65a9)
+
+
+### Step 23: Configure Help Desk Information
+
+1. Fill out your help desk information. Remember, the MySQL username is "root" and the password is the one you previously set.
+2. Download and install **HeidiSQL** from the Installation Files.
+3. Open HeidiSQL, follow the installation steps, and create a new session using **root/Password1**.
+4. Connect to the session and create a database called **"osTicket"**.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/075d1010-14da-4dbd-a35e-7c924491ff37)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/c2a8443b-2f71-462b-9ee3-c85962e750ce)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/04408fa9-44bd-4995-8aee-a30f84343791)
+
+
+### Step 24: Complete osTicket Setup
+
+1. Continue setting up osTicket in the browser.
+2. Enter these MySQL database details:
+   - MySQL Database: `osTicket`
+   - MySQL Username: `root`
+   - MySQL Password: `Password1`
+3. Click **"Install Now!"**.
+
+Congratulations, you're almost there!
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/e479d876-bb60-4b68-a27f-7ab91eb4c8ba)
+
+
+### Step 25: Clean Up
+
+1. Delete **C:\inetpub\wwwroot\osTicket\setup** (NOTE: Only delete the setup folder).
+2. Set permissions to "Read" only for **C:\inetpub\wwwroot\osTicket\include\ost-config.php**. Select **Apply** and **OK** to finish.
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/c758ce5b-c2fa-459e-8000-3a6643c57477)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/d67c718a-a5e0-43f3-a837-eb851d5f60aa)
+
+### Step 26: URLs for Projects
+
+1. Admin URL: [http://localhost/osTicket/scp/login.php](http://localhost/osTicket/scp/login.php)
+2. Client Ticket Submission URL: [http://localhost/osTicket/](http://localhost/osTicket/)
+
+Finally, let's ensure everything works. Let’s log in to our admin page: [http://localhost/osTicket/scp/login.php](http://localhost/osTicket/scp/login.php).
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/1f595070-9f2b-4e3f-8195-8c2b6d6475ed)
+
+![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/21e1081b-9e0d-4dd6-9506-a8a7c0266c9d)
