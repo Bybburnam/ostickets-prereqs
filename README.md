@@ -125,4 +125,37 @@ Note: This step is the longest and is broken down for convenience.
 ![image](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/ff38cd02-df70-418b-8780-b5da0db69575)
 
 
+### Step 12: Install Visual C++ Redistributable
+![13](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/a109c829-c1a4-4d3a-a537-23713da77277)
+
+### From the installation files, install `VC_redist.x86.exe`.
+![12](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/b1ad7ea8-8678-44f5-b582-665d44e36108)
+
+
+
+### Step 13: Install MySQL 5.5.62
+
+1. From the installation files, install **MySQL 5.5.62** (`mysql-5.5.62-win32.msi`).
+2. Choose **Typical Setup**.
+3. Launch the **Configuration Wizard** after installation.
+4. Select **Standard Configuration**.
+5. Set the password as **Password1**.
+6. Click **Next**, then click **Execute**, and finally click **Finish**.
+
+![14](https://github.com/Bybburnam/ostickets-prereqs/assets/102566114/3cd6347a-151a-4d10-8de2-818655e8d244)
+
+
+### Step 14: Configure IIS and Register PHP
+
+1. Open **IIS** as an Administrator.
+2. Register PHP from within IIS.
+3. Reload IIS by stopping and starting the server.
+
+### Step 15: Install osTicket v1.15.8
+
+1. Download **osTicket** from the Installation Files Folder.
+2. Extract and copy the **"upload"** folder to `c:\inetpub\wwwroot`.
+3. Within `c:\inetpub\wwwroot`, rename the copied **"upload"** folder to **"osTicket"**.
+4. Reload IIS again by stopping and starting the server.
+
 
